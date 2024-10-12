@@ -95,9 +95,8 @@ const wavRecorder = new WavRecorder({ sampleRate: 24000 });
 
 ## Acknowledgements
 
-Thank you for exploring the Next.js version of the OpenAI Realtime Console. We appreciate the collaborative efforts of the entire API and design teams who contributed to making this possible.
+Thank you for exploring the Next.js version of the OpenAI Realtime Console. This is a clone OpenAI's React version: [https://github.com/openai/openai-realtime-console](https://github.com/openai/openai-realtime-console).
 
 - [OpenAI Developers](https://x.com/OpenAIDevs)
-- Special Contributors: Jordan Sitkin, Mark Hudnall, Peter Bakkum, and others.
 
 For feedback and inquiries, please reach out via our GitHub repository or on Twitter.
