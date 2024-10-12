@@ -2,8 +2,6 @@
 
 The OpenAI Realtime Console offers an interactive and enriched API reference for the OpenAI Realtime API. This Next.js project integrates utilities like the [openai/openai-realtime-api-beta](https://github.com/openai/openai-realtime-api-beta) as a **Reference Client** for both browsers and Node.js environments, alongside audio management tools for easy browser-based interaction.
 
-![Realtime Console Demo](public/realtime-console-demo.png)
-
 ## Getting Started
 
 This application is a Next.js project. It provides a modern framework for server-side rendering and static site generation, facilitating a seamless development experience.
