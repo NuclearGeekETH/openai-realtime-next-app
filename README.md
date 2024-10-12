@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OpenAI Realtime Console - Next.js Version
+
+The OpenAI Realtime Console offers an interactive and enriched API reference for the OpenAI Realtime API. This Next.js project integrates utilities like the [openai/openai-realtime-api-beta](https://github.com/openai/openai-realtime-api-beta) as a **Reference Client** for both browsers and Node.js environments, alongside audio management tools for easy browser-based interaction.
+
+![Realtime Console Demo](public/realtime-console-demo.png)
 
 ## Getting Started
 
-First, run the development server:
+This application is a Next.js project. It provides a modern framework for server-side rendering and static site generation, facilitating a seamless development experience.
+
+### Prerequisites
+
+- **Node.js 14.x or later**: Ensure you have an updated version of Node.js.
+- **npm**: Node Package Manager, installed with Node.js.
+
+### Installation
+
+Clone the repository and install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ git clone https://github.com/NuclearGeekETH/openai-realtime-next-app.git
+$ cd openai-realtime-next-app
+$ npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running the Application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Start the Next.js development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+$ npm run dev
+```
 
-## Learn More
+Visit `http://localhost:3000` to access the console.
 
-To learn more about Next.js, take a look at the following resources:
+### Relay Server (Optional)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To utilize a server relay with your application:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+$ npm run relay
+```
 
-## Deploy on Vercel
+Configure `.env` with your OpenAI API key to use the relay server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```plaintext
+OPENAI_API_KEY=your_openai_api_key_here
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+In `app/page.tsx`, modify the server URL configuration as needed:
+
+```javascript
+// Use this for connecting to a local relay server
+// const USE_LOCAL_RELAY_SERVER_URL = 'http://localhost:8081';
+const USE_LOCAL_RELAY_SERVER_URL = undefined;
+```
+
+## Features
+
+### Console Usage
+
+- **Access**: Requires an OpenAI API key with Realtime API access.
+- **Connection**: Initiate sessions with microphone usage.
+- **Modes**: Switch between &quot;manual&quot; (Push-to-talk) and &quot;vad&quot; (Voice Activity Detection).
+
+#### Enabled Functions
+
+- `get_weather`: Obtain weather information based on location.
+- `set_memory`: Utilize the model’s memory capabilities for storing information.
+
+### Realtime API Reference Client
+
+Integrate the latest client seamlessly in any React or Node.js project. For full usage details, visit the [GitHub repository](https://github.com/openai/openai-realtime-api-beta).
+
+#### Example Usage
+
+```javascript
+import { RealtimeClient } from '/src/lib/realtime-api-beta/index.js';
+
+const client = new RealtimeClient({ apiKey: process.env.OPENAI_API_KEY });
+await client.connect();
+client.sendUserMessageContent([{ type: 'text', text: `How are you?` }]);
+```
+
+### WavTools
+
+Includes tools for handling PCM16 audio streams within the browser, both for recording and playback.
+
+#### Quickstart for WavRecorder
+
+```javascript
+import { WavRecorder } from '/src/lib/wavtools/index.js';
+
+const wavRecorder = new WavRecorder({ sampleRate: 24000 });
+// Setup and start recording via API methods
+```
+
+## Acknowledgements
+
+Thank you for exploring the Next.js version of the OpenAI Realtime Console. We appreciate the collaborative efforts of the entire API and design teams who contributed to making this possible.
+
+- [OpenAI Developers](https://x.com/OpenAIDevs)
+- Special Contributors: Jordan Sitkin, Mark Hudnall, Peter Bakkum, and others.
+
+For feedback and inquiries, please reach out via our GitHub repository or on Twitter.
